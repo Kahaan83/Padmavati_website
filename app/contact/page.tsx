@@ -4,10 +4,6 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, Clock, CheckCircle2, AlertCircle } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 
-/* ─── Metadata exported from a wrapper ── use generateMetadata pattern but since this
-      is a client component we export metadata from a sibling server component.
-      The metadata is set in the layout template: "Contact Us | Padmavati Enterprise" ── */
-
 const SERVICES = [
   "Doctor Files / PP Files",
   "Visiting Cards",
@@ -23,6 +19,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<FormState>("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: "",
     clinic: "",
@@ -33,17 +30,51 @@ export default function ContactPage() {
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear field error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  }
+
+  function validateForm() {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) newErrors.name = "Full name is required";
+    if (!formData.clinic.trim()) newErrors.clinic = "Clinic / Hospital name is required";
+    if (!formData.city.trim()) newErrors.city = "City is required";
+    if (!formData.service) newErrors.service = "Please select a service";
+
+    // Phone validation: exactly 10 digits
+    const cleanPhone = formData.phone.replace(/\s+/g, "").replace(/^\+91/, "");
+    const phoneRegex = /^\d{10}$/;
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!phoneRegex.test(cleanPhone)) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setFormState("submitting");
 
     try {
-      /* TODO: Replace YOUR_FORM_ID with your Formspree form ID from formspree.io
-         — free account allows 50 submissions/month */
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID || "YOUR_FORM_ID";
+      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
@@ -52,6 +83,7 @@ export default function ContactPage() {
       if (res.ok) {
         setFormState("success");
         setFormData({ name: "", clinic: "", phone: "", city: "", service: "", message: "" });
+        setErrors({});
       } else {
         setFormState("error");
       }
@@ -178,8 +210,6 @@ export default function ContactPage() {
 
               {/* Map */}
               <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-                {/* TODO: Replace with your exact Google Maps embed URL from maps.google.com
-                    Go to maps.google.com → search your address → Share → Embed a map → copy iframe src */}
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5826559788283!2d72.55480757604748!3d23.057571915476545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84d90e5b2f41%3A0x5e76a90b6c2fc52f!2sNaranpura%2C%20Ahmedabad%2C%20Gujarat%20380013!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                   width="100%"
@@ -207,7 +237,7 @@ export default function ContactPage() {
                   <div className="mb-6 flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                     <p className="text-sm text-green-800 font-medium">
-                      Thank you! We&apos;ll WhatsApp you within a few hours.
+                      Thank you! We&apos;ll reach out to you on WhatsApp within 2 hours. — Team Padmavati
                     </p>
                   </div>
                 )}
@@ -217,11 +247,7 @@ export default function ContactPage() {
                   <div className="mb-6 flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
                     <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <p className="text-sm text-red-700">
-                      Something went wrong. Please WhatsApp us directly at{" "}
-                      <a href="https://wa.me/919426338720" className="font-semibold underline" target="_blank" rel="noreferrer">
-                        +91 94 2633 8720
-                      </a>
-                      .
+                      Something went wrong. Please WhatsApp us directly at +91 94 2633 8720
                     </p>
                   </div>
                 )}
@@ -235,8 +261,9 @@ export default function ContactPage() {
                         id="name" name="name" type="text" required autoComplete="name"
                         placeholder="Dr. Ravi Sharma"
                         value={formData.name} onChange={handleChange}
-                        className={inputClass}
+                        className={`${inputClass} ${errors.name ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                       />
+                      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
                     <div>
                       <label htmlFor="clinic" className={labelClass}>Clinic / Hospital Name *</label>
@@ -244,8 +271,9 @@ export default function ContactPage() {
                         id="clinic" name="clinic" type="text" required
                         placeholder="City Heart Clinic"
                         value={formData.clinic} onChange={handleChange}
-                        className={inputClass}
+                        className={`${inputClass} ${errors.clinic ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                       />
+                      {errors.clinic && <p className="text-red-500 text-xs mt-1">{errors.clinic}</p>}
                     </div>
                   </div>
 
@@ -255,10 +283,11 @@ export default function ContactPage() {
                       <label htmlFor="phone" className={labelClass}>Phone Number *</label>
                       <input
                         id="phone" name="phone" type="tel" required autoComplete="tel"
-                        placeholder="+91 98765 43210"
+                        placeholder="e.g. 9876543210"
                         value={formData.phone} onChange={handleChange}
-                        className={inputClass}
+                        className={`${inputClass} ${errors.phone ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                       />
+                      {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
                     <div>
                       <label htmlFor="city" className={labelClass}>City *</label>
@@ -266,8 +295,9 @@ export default function ContactPage() {
                         id="city" name="city" type="text" required
                         placeholder="Ahmedabad"
                         value={formData.city} onChange={handleChange}
-                        className={inputClass}
+                        className={`${inputClass} ${errors.city ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                       />
+                      {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}
                     </div>
                   </div>
 
@@ -277,13 +307,14 @@ export default function ContactPage() {
                     <select
                       id="service" name="service" required
                       value={formData.service} onChange={handleChange}
-                      className={`${inputClass} cursor-pointer`}
+                      className={`${inputClass} cursor-pointer ${errors.service ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                     >
                       <option value="">Select a service…</option>
                       {SERVICES.map((s) => (
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>
+                    {errors.service && <p className="text-red-500 text-xs mt-1">{errors.service}</p>}
                   </div>
 
                   {/* Message */}
@@ -305,11 +336,32 @@ export default function ContactPage() {
                   >
                     {formState === "submitting" ? "Sending…" : "Send Enquiry →"}
                   </button>
-
-                  <p className="text-center text-xs text-neutral-mid">
-                    Or WhatsApp us directly — we reply faster! 😊
-                  </p>
                 </form>
+
+                {/* Fallback Section */}
+                <div className="mt-8 pt-8 border-t border-gray-100 text-center space-y-4">
+                  <p className="text-sm font-semibold text-neutral-dark">
+                    Prefer to reach out directly?
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
+                    <a
+                      href="https://wa.me/919426338720?text=Hi%2C%20I%27d%20like%20to%20get%20in%20touch%20directly"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm"
+                    >
+                      <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                      Chat on WhatsApp
+                    </a>
+                    <a
+                      href="mailto:sarthaktradingco@gmail.com"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-neutral-surface border border-gray-200 hover:bg-gray-50 text-neutral-dark text-sm font-semibold rounded-xl transition-all duration-200"
+                    >
+                      <Mail className="w-4 h-4 text-brand-primary" />
+                      sarthaktradingco@gmail.com
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
