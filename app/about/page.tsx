@@ -77,7 +77,7 @@ export default function AboutPage() {
     <>
       {/* ── Hero ── */}
       <PageHeader
-        title={`Serving Healthcare Since ${STATS.founded}`}
+        title={`Established ${STATS.founded} · ${new Date().getFullYear() - STATS.founded} Years of Excellence`}
         subtitle={`Three generations of trust. ${STATS.doctors} doctors. One mission — make your clinic look as professional as you are.`}
         breadcrumbs={[
           { label: "Home", href: "/" },

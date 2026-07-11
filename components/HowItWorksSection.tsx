@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, Palette, Truck } from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 const steps = [
   {
@@ -98,7 +99,7 @@ export default function HowItWorksSection() {
           className="mt-14 flex justify-center"
         >
           <a
-            href="https://wa.me/919426338720?text=Hi%2C%20I%20want%20to%20place%20an%20order"
+            href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20place%20an%20order`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold text-base rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"

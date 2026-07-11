@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, Clock, CheckCircle2, AlertCircle } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
+import { CONTACT } from "@/lib/contact";
 
 const SERVICES = [
   "Doctor Files / PP Files",
@@ -131,9 +132,7 @@ export default function ContactPage() {
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-1">Address</p>
                     <address className="not-italic text-sm text-neutral-dark leading-relaxed">
-                      7/38, Patrakar Colony,<br />
-                      Near Vijay Nagar School,<br />
-                      Naranpura, Ahmedabad — 380013, Gujarat
+                      {CONTACT.address}
                     </address>
                   </div>
                 </div>
@@ -145,11 +144,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-1">Phone</p>
-                    <a href="tel:+919426338720" className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
-                      +91 94 2633 8720
+                    <a href={`tel:${CONTACT.phone1.replace(/\s+/g, "")}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
+                      {CONTACT.phone1}
                     </a>
-                    <a href="tel:+919428801716" className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
-                      +91 94 2880 1716
+                    <a href={`tel:${CONTACT.phone2.replace(/\s+/g, "")}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
+                      {CONTACT.phone2}
                     </a>
                   </div>
                 </div>
@@ -162,11 +161,14 @@ export default function ContactPage() {
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-1">Email</p>
                     <a
-                      href="mailto:sarthaktradingco@gmail.com"
-                      className="text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors break-all"
+                      href={`mailto:${CONTACT.email}`}
+                      className="text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors break-all animate-pulse"
                     >
-                      sarthaktradingco@gmail.com
+                      {CONTACT.email}
                     </a>
+                    <p className="text-xs text-gray-400 mt-1">
+                      (For fastest response, WhatsApp us directly)
+                    </p>
                   </div>
                 </div>
 
@@ -178,7 +180,7 @@ export default function ContactPage() {
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-2">WhatsApp</p>
                     <a
-                      href="https://wa.me/919426338720?text=Hi%2C%20I%20want%20to%20enquire%20about%20your%20services"
+                      href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20enquire%20about%20your%20services`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
@@ -345,7 +347,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                     <a
-                      href="https://wa.me/919426338720?text=Hi%2C%20I%27d%20like%20to%20get%20in%20touch%20directly"
+                      href={`${CONTACT.whatsapp}?text=Hi%2C%20I%27d%20like%20to%20get%20in%20touch%20directly`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm"
@@ -354,11 +356,11 @@ export default function ContactPage() {
                       Chat on WhatsApp
                     </a>
                     <a
-                      href="mailto:sarthaktradingco@gmail.com"
+                      href={`mailto:${CONTACT.email}`}
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-neutral-surface border border-gray-200 hover:bg-gray-50 text-neutral-dark text-sm font-semibold rounded-xl transition-all duration-200"
                     >
                       <Mail className="w-4 h-4 text-brand-primary" />
-                      sarthaktradingco@gmail.com
+                      {CONTACT.email}
                     </a>
                   </div>
                 </div>

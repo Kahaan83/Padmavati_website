@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 const servicesList = [
   "Doctor Files",
@@ -36,7 +37,7 @@ export default function Footer() {
                 Design &amp; Print For Healthcare
               </p>
               <span className="inline-block mt-2 px-3 py-0.5 bg-brand-accent/20 text-brand-accent text-xs font-semibold rounded-full border border-brand-accent/30">
-                Since 1977
+                Serving Healthcare Since 1977
               </span>
             </div>
             <p className="text-sm text-gray-300 leading-relaxed">
@@ -75,36 +76,34 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-sm text-gray-300">
                 <MapPin className="w-4 h-4 text-brand-secondary mt-0.5 shrink-0" />
                 <span className="leading-relaxed">
-                  7/38, Patrakar Colony,<br />
-                  Near Vijay Nagar School,<br />
-                  Naranpura, Ahmedabad — 380013
+                  {CONTACT.address}
                 </span>
               </li>
               <li>
                 <a
-                  href="tel:+919426338720"
+                  href={`tel:${CONTACT.phone1.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 text-sm text-gray-300 hover:text-brand-secondary transition-colors"
                 >
                   <Phone className="w-4 h-4 text-brand-secondary shrink-0" />
-                  +91 94 2633 8720
+                  {CONTACT.phone1}
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+919428801716"
+                  href={`tel:${CONTACT.phone2.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 text-sm text-gray-300 hover:text-brand-secondary transition-colors"
                 >
                   <Phone className="w-4 h-4 text-brand-secondary shrink-0" />
-                  +91 94 2880 1716
+                  {CONTACT.phone2}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:sarthaktradingco@gmail.com"
-                  className="flex items-center gap-3 text-sm text-gray-300 hover:text-brand-secondary transition-colors break-all"
+                  href={`mailto:${CONTACT.email}`}
+                  className="flex items-center gap-3 text-sm text-brand-secondary hover:text-white transition-colors break-all font-semibold"
                 >
                   <Mail className="w-4 h-4 text-brand-secondary shrink-0" />
-                  sarthaktradingco@gmail.com
+                  {CONTACT.email}
                 </a>
               </li>
             </ul>
@@ -131,7 +130,7 @@ export default function Footer() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/919426338720?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Padmavati%20Enterprise"
+              href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Padmavati%20Enterprise`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"

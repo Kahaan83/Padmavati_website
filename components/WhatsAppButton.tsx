@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 export default function WhatsAppButton() {
   const pathname = usePathname();
@@ -60,7 +61,7 @@ export default function WhatsAppButton() {
         <span className="absolute inset-0 rounded-full animate-ping bg-[#25D366] opacity-30" />
 
         <a
-          href="https://wa.me/919426338720?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Padmavati%20Enterprise"
+          href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Padmavati%20Enterprise`}
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setHovered(true)}

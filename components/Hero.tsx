@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { STATS } from "@/lib/stats";
+import { CONTACT } from "@/lib/contact";
 import { Plus, MessageCircle, ChevronRight, Users, Clock, MapPin } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: STATS.doctors, label: "Clients" },
-  { icon: Clock, value: `${new Date().getFullYear() - STATS.founded} Yrs`, label: "Experience" },
-  { icon: MapPin, value: "Pan-India", label: "Delivery" },
+  { icon: Users, value: STATS.doctors, label: "Doctors Served" },
+  { icon: Clock, value: "In-House", label: "Design & Print" },
+  { icon: MapPin, value: "🚚 Pan-India", label: "Delivery" },
 ];
 
 const fadeUp = {
@@ -83,7 +84,7 @@ export default function Hero() {
               <strong className="text-neutral-dark font-medium">
                 we design, print and deliver
               </strong>{" "}
-              everything your clinic needs. In-house team. Zero outsourcing.
+              everything your clinic needs. In-house team. Zero outsourcing. We deliver pan-India — from Gujarat to Delhi, Mumbai to Chennai.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -95,7 +96,7 @@ export default function Hero() {
               className="flex flex-wrap gap-3"
             >
               <a
-                href="https://wa.me/919426338720?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding"
+                href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-navy text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
@@ -157,10 +158,6 @@ export default function Hero() {
                 {/* Gradient overlay at bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
 
-                {/* Since 1977 badge */}
-                <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">
-                  <span className="text-brand-primary text-xs font-bold">Since 1977 ✦</span>
-                </div>
 
                 {/* Bottom caption */}
                 <div className="absolute bottom-4 left-4 right-4">
@@ -169,23 +166,6 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            {/* Social proof below card */}
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              {[
-                { num: STATS.doctors, txt: "Doctors" },
-                { num: `${new Date().getFullYear() - STATS.founded}+`, txt: "Years" },
-                { num: "100%", txt: "In-House" },
-              ].map(({ num, txt }) => (
-                <div
-                  key={txt}
-                  className="text-center py-3 bg-white rounded-xl border border-gray-100 shadow-sm"
-                >
-                  <p className="text-lg font-bold text-brand-primary">{num}</p>
-                  <p className="text-xs text-neutral-mid">{txt}</p>
-                </div>
-              ))}
             </div>
           </motion.div>
         </div>

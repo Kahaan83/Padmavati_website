@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTABanner from "@/components/CTABanner";
+import { CONTACT } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -86,7 +87,7 @@ function ServiceCard({
       <p className="text-xs text-neutral-mid leading-relaxed flex-1">{desc}</p>
       {/* CTA */}
       <a
-        href={`https://wa.me/919426338720?text=${waText}`}
+        href={`${CONTACT.whatsapp}?text=${waText}`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-brand-secondary hover:text-brand-primary transition-colors"

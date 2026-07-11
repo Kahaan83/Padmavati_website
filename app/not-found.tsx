@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MessageCircle, Home } from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 export const metadata = {
   title: "404 Page Not Found | Padmavati Enterprise",
@@ -32,7 +33,7 @@ export default function NotFound() {
         </Link>
 
         <a
-          href="https://wa.me/919426338720?text=Hi%2C%20I%20got%20a%20404%20error%20on%20your%20website"
+          href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20got%20a%20404%20error%20on%20your%20website`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold text-sm rounded-xl transition-all duration-200"

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -75,14 +76,14 @@ export default function Navbar() {
 
           {/* WhatsApp CTA — desktop */}
           <a
-            href="https://wa.me/919426338720?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding"
+            href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 px-4 py-2 bg-brand-primary hover:bg-brand-navy text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
             aria-label="WhatsApp Padmavati Enterprise"
           >
             <Phone className="w-4 h-4" />
-            <span>+91 94 2633 8720</span>
+            <span>{CONTACT.phone1}</span>
           </a>
 
           {/* Hamburger — mobile */}
@@ -121,14 +122,14 @@ export default function Navbar() {
 
             {/* Mobile WhatsApp CTA */}
             <a
-              href="https://wa.me/919426338720?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding"
+              href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="flex items-center justify-center gap-2 mx-4 my-3 px-4 py-3 bg-brand-primary text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-brand-navy"
             >
               <Phone className="w-4 h-4" />
-              <span>WhatsApp: +91 94 2633 8720</span>
+              <span>{CONTACT.phone1}</span>
             </a>
           </div>
         </div>
