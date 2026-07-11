@@ -24,7 +24,7 @@ const badgeColors: Record<string, string> = {
 
 /* ─── Portfolio items (18 entries) ─── */
 const items = [
-  { id:  1, category: "Doctor Files",   client: "Nidaan Clinic",                   location: "Ahmedabad" },
+  { id:  1, category: "Doctor Files",   client: "Nidaan Hospital",                   location: "Ahmedabad" },
   { id:  2, category: "Brochures",      client: "Dr. Sanjay Shah",                 location: "Ahmedabad" },
   { id:  3, category: "Letterheads",    client: "Shreyan Hospital",                location: "Ahmedabad" },
   { id:  4, category: "Visiting Cards", client: "Cure Sight Laser Center",         location: "Ahmedabad" },
@@ -35,10 +35,10 @@ const items = [
   { id:  9, category: "Letterheads",    client: "Dr. Maulik R Soni",               location: "Ahmedabad" },
   { id: 10, category: "Doctor Files",   client: "Vedant Hospital",                 location: "Ahmedabad" },
   { id: 11, category: "NABH Forms",     client: "Gandhinagar Fetal Medicine Center",location: "Gandhinagar" },
-  { id: 12, category: "Logos",          client: "Annya Clinic",                    location: "Ahmedabad" },
+  { id: 12, category: "Logos",          client: "Annya Hospital",                    location: "Ahmedabad" },
   { id: 13, category: "Brochures",      client: "Dr. Hardik Shah",                 location: "Ahmedabad" },
   { id: 14, category: "Envelopes",      client: "Chirayu Hospital",                location: "Ahmedabad" },
-  { id: 15, category: "NABH Forms",     client: "Nidaan Clinic",                   location: "Ahmedabad" },
+  { id: 15, category: "NABH Forms",     client: "Nidaan Hospital",                   location: "Ahmedabad" },
   { id: 16, category: "Visiting Cards", client: "Cure Sight Laser Center",         location: "Ahmedabad" },
   { id: 17, category: "Doctor Files",   client: "Gandhinagar Fetal Medicine Center",location: "Gandhinagar" },
   { id: 18, category: "Brochures",      client: "Darsan Diagnostic",               location: "Ahmedabad" },
@@ -48,7 +48,7 @@ const items = [
 function PortfolioCard({ category, client, location, index }: { category: string; client: string; location: string; index: number }) {
   // Map categories to real downloaded image assets
   const categoryImages: Record<string, string> = {
-    "Doctor Files": "/portfolio/nidaan-clinic.jpg",
+    "Doctor Files": "/portfolio/nidaan-hospital.jpg",
     "Visiting Cards": "/portfolio/cure-sight-visiting-card.jpg",
     Letterheads: "/portfolio/shreyan-letterhead.jpg",
     Logos: "/portfolio/logo-sample.png",
@@ -69,7 +69,7 @@ function PortfolioCard({ category, client, location, index }: { category: string
       {/* Image area */}
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-surface">
         <Image
-          src={categoryImages[category] || "/portfolio/nidaan-clinic.jpg"}
+          src={categoryImages[category] || "/portfolio/nidaan-hospital.jpg"}
           alt={`${category} designed and printed by Padmavati Enterprise for ${client}`}
           fill
           loading="lazy"
@@ -205,3 +205,4 @@ export default function PortfolioPage() {
     </>
   );
 }
+

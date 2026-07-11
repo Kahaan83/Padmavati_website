@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-gray-300 leading-relaxed">
               Ahmedabad&apos;s trusted healthcare branding &amp; print studio. We help
-              doctors, clinics, and hospitals look professional — with in-house
+              doctors, hospitals, and hospitals look professional — with in-house
               design, print, and delivery. No outsourcing, ever.
             </p>
           </div>
@@ -152,3 +152,4 @@ export default function Footer() {
     </footer>
   );
 }
+

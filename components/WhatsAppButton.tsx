@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
 
   const isVisible = hovered || showAutoTooltip;
   const tooltipText = showAutoTooltip
-    ? "Need help with clinic branding? Chat with us →"
+    ? "Need help with hospital branding? Chat with us →"
     : "Chat with us on WhatsApp";
 
   return (
@@ -82,3 +82,4 @@ export default function WhatsAppButton() {
     </div>
   );
 }
+

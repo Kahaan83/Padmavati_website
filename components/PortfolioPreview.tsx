@@ -14,9 +14,9 @@ const portfolioItems = [
   {
     id: 1,
     category: "Doctor Files" as Category,
-    client: "Nidaan Clinic",
+    client: "Nidaan Hospital",
     location: "Ahmedabad",
-    image: "/portfolio/nidaan-clinic.jpg",
+    image: "/portfolio/nidaan-hospital.jpg",
     gradient: "from-brand-primary to-brand-secondary",
   },
   {
@@ -205,3 +205,4 @@ export default function PortfolioPreview() {
     </section>
   );
 }
+

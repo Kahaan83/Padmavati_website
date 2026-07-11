@@ -7,3 +7,4 @@ export const CONTACT = {
   hours: "Monday to Saturday, 10:00 AM – 7:00 PM",
   responseTime: "We respond within 2 hours on WhatsApp",
 } as const;
+

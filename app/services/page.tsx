@@ -20,14 +20,14 @@ const categories = [
   {
     id: "stationery",
     title: "Hospital Stationery",
-    subtitle: "Professional printed stationery built for clinical environments",
+    subtitle: "Professional printed stationery built for hospitalal environments",
     accentColor: "bg-brand-primary/10 text-brand-primary",
     services: [
       { icon: FolderOpen, name: "Doctor / PP Files", desc: "Premium UV-coated patient files with anti-scratch finish" },
       { icon: Package, name: "MRI & X-Ray Bags", desc: "Branded poly bags for MRI, CT and X-Ray report delivery" },
       { icon: FileText, name: "Prescription Pads (1×8\")", desc: "Custom pad sizes in single or duplicate with carbon copy" },
-      { icon: FileText, name: "Letterheads", desc: "Clinic and hospital letterheads in bond or premium paper" },
-      { icon: Mail, name: "Envelopes", desc: "Branded DL, A4 and A5 envelopes for clinic correspondence" },
+      { icon: FileText, name: "Letterheads", desc: "Hospital and hospital letterheads in bond or premium paper" },
+      { icon: Mail, name: "Envelopes", desc: "Branded DL, A4 and A5 envelopes for hospital correspondence" },
       { icon: ClipboardList, name: "Consent Forms", desc: "Pre-operative and procedure consent forms for all specialities" },
       { icon: FileCheck, name: "NABH Forms", desc: "Entire set of NABH-compliant hospital documentation" },
       { icon: FilePlus, name: "Indoor Documents", desc: "Case sheets, nursing charts and indoor patient records" },
@@ -36,28 +36,28 @@ const categories = [
   {
     id: "branding",
     title: "Branding & Design",
-    subtitle: "Build a clinic identity that patients trust at first sight",
+    subtitle: "Build a hospital identity that patients trust at first sight",
     accentColor: "bg-brand-secondary/10 text-brand-secondary",
     services: [
-      { icon: Palette, name: "Logo Design", desc: "Complete clinic brand identity — logo, colours and typography" },
+      { icon: Palette, name: "Logo Design", desc: "Complete hospital brand identity — logo, colours and typography" },
       { icon: CreditCard, name: "Visiting Cards", desc: "Premium UV-coated visiting cards for doctors on 350 GSM" },
-      { icon: BookOpen, name: "Brochures (3-fold & 4-fold)", desc: "Multi-fold clinic and hospital marketing brochures" },
-      { icon: Megaphone, name: "Flyers", desc: "Single-sheet clinic promotional flyers and health camp notices" },
-      { icon: PartyPopper, name: "Invitation Cards", desc: "Clinic inauguration, OPD launch and event invitations" },
+      { icon: BookOpen, name: "Brochures (3-fold & 4-fold)", desc: "Multi-fold hospital and hospital marketing brochures" },
+      { icon: Megaphone, name: "Flyers", desc: "Single-sheet hospital promotional flyers and health camp notices" },
+      { icon: PartyPopper, name: "Invitation Cards", desc: "Hospital inauguration, OPD launch and event invitations" },
       { icon: BookMarked, name: "Books & Magazines", desc: "Patient education booklets and hospital annual magazines" },
     ],
   },
   {
     id: "peripherals",
     title: "Printed Peripherals & Other",
-    subtitle: "Branded accessories that extend your clinic's professional identity",
+    subtitle: "Branded accessories that extend your hospital's professional identity",
     accentColor: "bg-brand-accent/15 text-brand-deep",
     services: [
       { icon: Cpu, name: "Printed Pendrives", desc: "Branded USB pendrives for patient data and presentations" },
       { icon: Disc3, name: "Printed CD Covers", desc: "Custom printed sleeves and jewel-case inserts for medical CDs" },
       { icon: IdCard, name: "ID Cards", desc: "PVC photo ID cards for doctors, nurses and support staff" },
       { icon: Tag, name: "Wristbands", desc: "Patient identification wristbands — plain or barcode printed" },
-      { icon: ShoppingBag, name: "Non-Woven Bags", desc: "Eco-friendly branded carry bags for clinics and pharmacies" },
+      { icon: ShoppingBag, name: "Non-Woven Bags", desc: "Eco-friendly branded carry bags for hospitals and pharmacies" },
       { icon: Baby, name: "New Born Baby Kit", desc: "Printed welcome kits and info cards for newborn departments" },
       { icon: Layers, name: "Tag & Labels", desc: "Specimen labels, sample tags and file stickers" },
       { icon: Shirt, name: "All Linen Items", desc: "Branded scrubs, aprons and linen items for hospital staff" },
@@ -105,7 +105,7 @@ export default function ServicesPage() {
     <>
       <PageHeader
         title="Our Services"
-        subtitle="Everything your clinic needs — designed, printed and delivered by our in-house team"
+        subtitle="Everything your hospital needs — designed, printed and delivered by our in-house team"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services" },
@@ -143,3 +143,4 @@ export default function ServicesPage() {
     </>
   );
 }
+

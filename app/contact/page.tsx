@@ -23,7 +23,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: "",
-    clinic: "",
+    hospital: "",
     phone: "",
     city: "",
     service: "",
@@ -47,7 +47,7 @@ export default function ContactPage() {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) newErrors.name = "Full name is required";
-    if (!formData.clinic.trim()) newErrors.clinic = "Clinic / Hospital name is required";
+    if (!formData.hospital.trim()) newErrors.hospital = "Hospital / Hospital name is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.service) newErrors.service = "Please select a service";
 
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
       if (res.ok) {
         setFormState("success");
-        setFormData({ name: "", clinic: "", phone: "", city: "", service: "", message: "" });
+        setFormData({ name: "", hospital: "", phone: "", city: "", service: "", message: "" });
         setErrors({});
       } else {
         setFormState("error");
@@ -255,7 +255,7 @@ export default function ContactPage() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                  {/* Name + Clinic */}
+                  {/* Name + Hospital */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className={labelClass}>Full Name *</label>
@@ -268,14 +268,14 @@ export default function ContactPage() {
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
                     <div>
-                      <label htmlFor="clinic" className={labelClass}>Clinic / Hospital Name *</label>
+                      <label htmlFor="hospital" className={labelClass}>Hospital / Hospital Name *</label>
                       <input
-                        id="clinic" name="clinic" type="text" required
-                        placeholder="City Heart Clinic"
-                        value={formData.clinic} onChange={handleChange}
-                        className={`${inputClass} ${errors.clinic ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
+                        id="hospital" name="hospital" type="text" required
+                        placeholder="City Heart Hospital"
+                        value={formData.hospital} onChange={handleChange}
+                        className={`${inputClass} ${errors.hospital ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : ""}`}
                       />
-                      {errors.clinic && <p className="text-red-500 text-xs mt-1">{errors.clinic}</p>}
+                      {errors.hospital && <p className="text-red-500 text-xs mt-1">{errors.hospital}</p>}
                     </div>
                   </div>
 
@@ -324,7 +324,7 @@ export default function ContactPage() {
                     <label htmlFor="message" className={labelClass}>Tell us more (optional)</label>
                     <textarea
                       id="message" name="message" rows={4}
-                      placeholder="e.g. I need 500 visiting cards and 100 letterheads for my new clinic opening next month…"
+                      placeholder="e.g. I need 500 visiting cards and 100 letterheads for my new hospital opening next month…"
                       value={formData.message} onChange={handleChange}
                       className={`${inputClass} resize-none`}
                     />
@@ -372,3 +372,4 @@ export default function ContactPage() {
     </>
   );
 }
+

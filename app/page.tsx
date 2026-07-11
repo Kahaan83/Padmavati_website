@@ -10,7 +10,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata: Metadata = {
   title: "Padmavati Enterprise — Healthcare Design & Print | Ahmedabad",
   description:
-    "Complete branding & print solutions for doctors, clinics and hospitals. Doctor files, letterheads, visiting cards, NABH forms, hospital stationery — all in-house. Serving Ahmedabad since 1977.",
+    "Complete branding & print solutions for doctors, hospitals and hospitals. Doctor files, letterheads, visiting cards, NABH forms, hospital stationery — all in-house. Serving Ahmedabad since 1977.",
 };
 
 export default function HomePage() {
@@ -26,3 +26,4 @@ export default function HomePage() {
     </>
   );
 }
+

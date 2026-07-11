@@ -11,7 +11,7 @@ const steps = [
     iconColor: "text-brand-secondary",
     iconBg: "bg-brand-secondary/10",
     title: "Tell Us What You Need",
-    desc: "WhatsApp or call us with your clinic name and requirements. No forms, no meetings.",
+    desc: "WhatsApp or call us with your hospital name and requirements. No forms, no meetings.",
   },
   {
     number: "02",
@@ -19,15 +19,15 @@ const steps = [
     iconColor: "text-brand-primary",
     iconBg: "bg-brand-primary/10",
     title: "We Design It",
-    desc: "Our in-house design team creates your artwork — from a single visiting card to a complete clinic brand package. You approve before we print.",
+    desc: "Our in-house design team creates your artwork — from a single visiting card to a complete hospital brand package. You approve before we print.",
   },
   {
     number: "03",
     icon: Truck,
     iconColor: "text-brand-accent",
     iconBg: "bg-brand-accent/15",
-    title: "Delivered to Your Clinic",
-    desc: "We print and dispatch to your clinic anywhere in India. Fast turnaround, zero hassle.",
+    title: "Delivered to Your Hospital",
+    desc: "We print and dispatch to your hospital anywhere in India. Fast turnaround, zero hassle.",
   },
 ];
 
@@ -112,3 +112,4 @@ export default function HowItWorksSection() {
     </section>
   );
 }
+

@@ -24,7 +24,7 @@ const services = [
   {
     icon: FileText,
     name: "Letterheads & Prescription Pads",
-    desc: "Branded prescription pads and clinic letterheads",
+    desc: "Branded prescription pads and hospital letterheads",
   },
   {
     icon: CreditCard,
@@ -34,12 +34,12 @@ const services = [
   {
     icon: BookOpen,
     name: "Brochures & Flyers",
-    desc: "3-fold, 4-fold clinic brochures",
+    desc: "3-fold, 4-fold hospital brochures",
   },
   {
     icon: Pen,
     name: "Logo Design",
-    desc: "Complete clinic brand identity from scratch",
+    desc: "Complete hospital brand identity from scratch",
   },
   {
     icon: ClipboardList,
@@ -96,7 +96,7 @@ export default function ServicesSection() {
             Our Services
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-brand-primary mb-4 text-balance">
-            Everything Your Clinic Needs — Under One Roof
+            Everything Your Hospital Needs — Under One Roof
           </h2>
           <p className="text-neutral-mid text-base leading-relaxed">
             From concept to delivery, our in-house team handles everything. No middlemen.
@@ -158,3 +158,4 @@ export default function ServicesSection() {
     </section>
   );
 }
+

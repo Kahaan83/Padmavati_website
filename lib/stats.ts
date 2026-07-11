@@ -5,3 +5,4 @@ export const STATS = {
   founded: 1977,
   yearsExperience: () => `${new Date().getFullYear() - 1977}+`,
 } as const;
+

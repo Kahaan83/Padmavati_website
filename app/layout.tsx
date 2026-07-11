@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "medical printing Ahmedabad",
     "doctor files",
     "PP files",
-    "clinic branding",
+    "hospital branding",
     "healthcare stationery",
     "NABH forms",
     "letterhead design",
@@ -60,3 +60,4 @@ export default function RootLayout({
     </html>
   );
 }
+

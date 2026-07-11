@@ -76,7 +76,7 @@ export default function Navbar() {
 
           {/* WhatsApp CTA — desktop */}
           <a
-            href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
+            href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20hospital%20branding`}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 px-4 py-2 bg-brand-primary hover:bg-brand-navy text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
@@ -122,7 +122,7 @@ export default function Navbar() {
 
             {/* Mobile WhatsApp CTA */}
             <a
-              href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
+              href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20hospital%20branding`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
@@ -137,3 +137,4 @@ export default function Navbar() {
     </header>
   );
 }
+

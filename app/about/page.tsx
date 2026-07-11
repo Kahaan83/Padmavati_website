@@ -20,7 +20,7 @@ const whyUs = [
   {
     icon: Stethoscope,
     title: "Healthcare Specialists",
-    desc: "We only serve doctors and hospitals. We know what a patient file needs, what NABH requires, what works in a clinic.",
+    desc: "We only serve doctors and hospitals. We know what a patient file needs, what NABH requires, what works in a hospital.",
   },
   {
     icon: Zap,
@@ -50,7 +50,7 @@ const focus = [
     icon: Sparkles,
     label: "Creativity",
     color: "bg-brand-primary/10 text-brand-primary",
-    desc: "Fresh, modern designs that make your clinic stand out and inspire patient confidence.",
+    desc: "Fresh, modern designs that make your hospital stand out and inspire patient confidence.",
   },
   {
     icon: TrendingUp,
@@ -78,7 +78,7 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <PageHeader
         title={`Established ${STATS.founded} · ${new Date().getFullYear() - STATS.founded} Years of Excellence`}
-        subtitle={`Three generations of trust. ${STATS.doctors} doctors. One mission — make your clinic look as professional as you are.`}
+        subtitle={`Three generations of trust. ${STATS.doctors} doctors. One mission — make your hospital look as professional as you are.`}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "About Us" },
@@ -223,3 +223,4 @@ export default function AboutPage() {
     </>
   );
 }
+

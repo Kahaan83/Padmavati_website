@@ -84,7 +84,7 @@ export default function Hero() {
               <strong className="text-neutral-dark font-medium">
                 we design, print and deliver
               </strong>{" "}
-              everything your clinic needs. In-house team. Zero outsourcing. We deliver pan-India — from Gujarat to Delhi, Mumbai to Chennai.
+              everything your hospital needs. In-house team. Zero outsourcing. We deliver pan-India — from Gujarat to Delhi, Mumbai to Chennai.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -96,7 +96,7 @@ export default function Hero() {
               className="flex flex-wrap gap-3"
             >
               <a
-                href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding`}
+                href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20hospital%20branding`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-navy text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
@@ -173,3 +173,4 @@ export default function Hero() {
     </section>
   );
 }
+
