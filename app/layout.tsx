@@ -13,29 +13,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Padmavati Enterprise — Healthcare Design & Print | Ahmedabad",
+    default: "Padmavati Enterprise — Design & Print For Healthcare | Ahmedabad",
     template: "%s | Padmavati Enterprise",
   },
   description:
-    "Ahmedabad's trusted healthcare print & branding studio since 1977. Doctor files, letterheads, visiting cards, NABH forms, hospital stationery and more. In-house design, print & delivery. Serving 600+ doctors and hospitals.",
+    "Complete healthcare branding, design and print solutions for doctors and hospitals. Doctor files, visiting cards, letterheads, NABH forms and more. Serving 600+ clients since 1977.",
   keywords: [
-    "healthcare printing Ahmedabad",
-    "doctor files printing",
-    "NABH forms",
-    "hospital stationery",
+    "medical printing Ahmedabad",
+    "doctor files",
+    "PP files",
     "clinic branding",
-    "medical printing",
+    "healthcare stationery",
+    "NABH forms",
     "letterhead design",
     "visiting cards doctors",
+    "hospital stationery",
+    "healthcare printing",
   ],
   openGraph: {
-    title: "Padmavati Enterprise — Healthcare Design & Print | Ahmedabad",
+    title: "Padmavati Enterprise — Design & Print For Healthcare",
     description:
-      "Complete branding & print solutions for healthcare professionals. Design → Print → Deliver. Trusted since 1977.",
+      "Complete healthcare branding, design and print solutions for doctors in Ahmedabad and across India.",
+    url: "https://padmavatienterprise.com",
+    siteName: "Padmavati Enterprise",
     locale: "en_IN",
     type: "website",
   },
 };
+
 
 export default function RootLayout({
   children,
