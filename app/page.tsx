@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
+import ServicesSection from "@/components/ServicesSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import PortfolioPreview from "@/components/PortfolioPreview";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import StatsSection from "@/components/StatsSection";
+import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
   title: "Padmavati Enterprise — Healthcare Design & Print | Ahmedabad",
@@ -11,14 +17,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-
-      {/* ── Phase 2 sections (placeholders) ── */}
-      {/* TODO Phase 2: <ServicesSection /> */}
-      {/* TODO Phase 2: <HowItWorksSection /> */}
-      {/* TODO Phase 2: <PortfolioPreview /> */}
-      {/* TODO Phase 2: <TestimonialsSection /> */}
-      {/* TODO Phase 2: <StatsSection /> */}
-      {/* TODO Phase 2: <CTABanner /> */}
+      <ServicesSection />
+      <HowItWorksSection />
+      <PortfolioPreview />
+      <TestimonialsSection />
+      <StatsSection />
+      <CTABanner />
     </>
   );
 }

@@ -1,0 +1,203 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+
+type Category = "All" | "Doctor Files" | "Visiting Cards" | "Letterhead" | "Logo Design" | "Brochures";
+
+const tabs: Category[] = ["All", "Doctor Files", "Visiting Cards", "Letterhead", "Logo Design", "Brochures"];
+
+const portfolioItems = [
+  {
+    id: 1,
+    category: "Doctor Files" as Category,
+    client: "Nidaan Clinic",
+    location: "Ahmedabad",
+    gradient: "from-brand-primary to-brand-secondary",
+  },
+  {
+    id: 2,
+    category: "Brochures" as Category,
+    client: "Dr. Sanjay Shah",
+    location: "Ahmedabad",
+    gradient: "from-brand-secondary to-brand-accent",
+  },
+  {
+    id: 3,
+    category: "Letterhead" as Category,
+    client: "Shreyan Hospital",
+    location: "Ahmedabad",
+    gradient: "from-brand-navy to-brand-primary",
+  },
+  {
+    id: 4,
+    category: "Visiting Cards" as Category,
+    client: "Cure Sight Laser Center",
+    location: "Ahmedabad",
+    gradient: "from-brand-primary to-brand-accent",
+  },
+  {
+    id: 5,
+    category: "Logo Design" as Category,
+    client: "Max Hospital",
+    location: "India",
+    gradient: "from-brand-accent to-brand-secondary",
+  },
+  {
+    id: 6,
+    category: "Doctor Files" as Category,
+    client: "Chirayu Hospital",
+    location: "Ahmedabad",
+    gradient: "from-brand-navy to-brand-secondary",
+  },
+];
+
+// Accent color per category
+const categoryColor: Record<string, string> = {
+  "Doctor Files": "bg-brand-accent",
+  Brochures: "bg-brand-secondary",
+  Letterhead: "bg-brand-primary",
+  "Visiting Cards": "bg-brand-deep",
+  "Logo Design": "bg-brand-accent",
+};
+
+export default function PortfolioPreview() {
+  const [activeTab, setActiveTab] = useState<Category>("All");
+
+  const filtered =
+    activeTab === "All"
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.category === activeTab);
+
+  return (
+    <section className="py-20 bg-white" id="portfolio">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55 }}
+          className="text-center max-w-2xl mx-auto mb-10"
+        >
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
+            Portfolio
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-brand-primary mb-4 text-balance">
+            Our Work Speaks for Itself
+          </h2>
+          <p className="text-neutral-mid text-base leading-relaxed">
+            A glimpse of what we&apos;ve created for 600+ doctors and hospitals across India
+          </p>
+        </motion.div>
+
+        {/* Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+        >
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                activeTab === tab
+                  ? "bg-brand-primary text-white border-brand-primary shadow-sm"
+                  : "bg-white text-neutral-mid border-gray-200 hover:border-brand-secondary hover:text-brand-primary"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Portfolio Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((item) => (
+              <motion.div
+                key={item.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="group rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300 bg-white"
+              >
+                {/* Image area */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {/* TODO: Replace gradient placeholders with actual <Image> of portfolio work */}
+                  <div
+                    className={`w-full h-full bg-gradient-to-br ${item.gradient} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}
+                  >
+                    {/* Decorative inner card mock */}
+                    <div className="w-2/3 h-3/5 bg-white/20 rounded-xl backdrop-blur-sm border border-white/30 flex flex-col items-center justify-center gap-2">
+                      <div className="w-8 h-1 rounded-full bg-white/60" />
+                      <div className="w-12 h-1 rounded-full bg-white/40" />
+                      <div className="w-10 h-1 rounded-full bg-white/50" />
+                    </div>
+                  </div>
+
+                  {/* Category badge */}
+                  <span
+                    className={`absolute top-3 left-3 px-2.5 py-1 ${
+                      categoryColor[item.category] ?? "bg-brand-primary"
+                    } text-white text-[10px] font-bold rounded-full uppercase tracking-wider`}
+                  >
+                    {item.category}
+                  </span>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-brand-navy/75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-white font-bold text-lg">{item.client}</p>
+                    <p className="text-brand-secondary text-sm mt-1">{item.category}</p>
+                  </div>
+                </div>
+
+                {/* Card footer */}
+                <div className="px-4 py-3.5 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-neutral-dark">{item.client}</p>
+                    <p className="text-xs text-neutral-mid mt-0.5">{item.location}</p>
+                  </div>
+                  <span
+                    className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${
+                      categoryColor[item.category] ?? "bg-brand-primary"
+                    } text-white`}
+                  >
+                    {item.category}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* View all CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 flex justify-center"
+        >
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-brand-primary text-brand-primary font-semibold rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-200 hover:shadow-md"
+          >
+            View Full Portfolio
+            <ChevronRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
