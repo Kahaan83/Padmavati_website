@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Eye } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
+import { STATS } from "@/lib/stats";
 
 /* ─── Tabs ─── */
 type Tab = "All" | "Doctor Files" | "Visiting Cards" | "Letterheads" | "Logos" | "Brochures" | "Envelopes" | "NABH Forms";
@@ -123,7 +124,7 @@ export default function PortfolioPage() {
 
       <PageHeader
         title="Our Portfolio"
-        subtitle="Real work for real doctors. 600+ clients, 47 years of excellence."
+        subtitle={`Real work for real doctors. ${STATS.doctors} clients, ${new Date().getFullYear() - STATS.founded} years of excellence.`}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Portfolio" },

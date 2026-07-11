@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Stethoscope, Zap, Globe, CheckCircle2, MessageSquare, Sparkles, TrendingUp, Users, Target } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTABanner from "@/components/CTABanner";
+import { STATS } from "@/lib/stats";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "47 years of serving doctors and hospitals in Ahmedabad. Learn about Padmavati Enterprise's story and team.",
+    `${new Date().getFullYear() - STATS.founded} years of serving doctors and hospitals in Ahmedabad. Learn about Padmavati Enterprise's story and team.`,
 };
 
 /* ─── Why Choose Us cards ─── */
@@ -67,7 +68,7 @@ const focus = [
     icon: Users,
     label: "Success",
     color: "bg-brand-navy/10 text-brand-navy",
-    desc: "Your professional image is our success metric. 600+ satisfied clients across Gujarat and India since 1977.",
+    desc: `Your professional image is our success metric. ${STATS.doctors} satisfied clients across Gujarat and India since ${STATS.founded}.`,
   },
 ];
 
@@ -76,8 +77,8 @@ export default function AboutPage() {
     <>
       {/* ── Hero ── */}
       <PageHeader
-        title="Serving Healthcare Since 1977"
-        subtitle="Three generations of trust. 600+ doctors. One mission — make your clinic look as professional as you are."
+        title={`Serving Healthcare Since ${STATS.founded}`}
+        subtitle={`Three generations of trust. ${STATS.doctors} doctors. One mission — make your clinic look as professional as you are.`}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "About Us" },
@@ -94,13 +95,13 @@ export default function AboutPage() {
                 Our Story
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-brand-primary mb-6 leading-snug">
-                Built for Healthcare. <br className="hidden sm:block" />Trusted for 47 Years.
+                Built for Healthcare. <br className="hidden sm:block" />Trusted for {new Date().getFullYear() - STATS.founded} Years.
               </h2>
               <div className="space-y-5 text-neutral-mid leading-relaxed text-[15px]">
                 <p>
-                  <strong className="text-neutral-dark">Padmavati Enterprise was founded in 1977</strong> in Ahmedabad
+                  <strong className="text-neutral-dark">Padmavati Enterprise was founded in {STATS.founded}</strong> in Ahmedabad
                   with one simple goal — to give healthcare professionals the same quality of design and print that was
-                  previously only available to large corporations. For over 47 years, we have grown alongside the
+                  previously only available to large corporations. For over {new Date().getFullYear() - STATS.founded} years, we have grown alongside the
                   doctors and hospitals we serve, becoming a trusted name in healthcare printing across Gujarat and
                   India.
                 </p>
@@ -114,7 +115,7 @@ export default function AboutPage() {
                 <p>
                   Over four decades we have printed millions of patient files, thousands of visiting card sets, and
                   complete NABH documentation packages for hospitals across India. Every order, large or small, gets
-                  the same attention to detail that earned us the trust of 600+ doctors and counting.
+                  the same attention to detail that earned us the trust of {STATS.doctors} doctors and counting.
                 </p>
               </div>
 
@@ -140,10 +141,10 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-2 gap-y-8 gap-x-6">
                 {[
-                  { num: "600+",  label: "Doctors & Hospitals Served" },
-                  { num: "47",    label: "Years of Experience" },
-                  { num: "2000+", label: "Projects Completed" },
-                  { num: "15+",   label: "In-House Team Members" },
+                  { num: STATS.doctors,  label: "Doctors & Hospitals Served" },
+                  { num: `${new Date().getFullYear() - STATS.founded}`,    label: "Years of Experience" },
+                  { num: STATS.projects, label: "Projects Completed" },
+                  { num: STATS.team,     label: "In-House Team Members" },
                 ].map(({ num, label }) => (
                   <div key={label}>
                     <p className="text-4xl font-extrabold leading-none">{num}</p>

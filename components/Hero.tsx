@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { STATS } from "@/lib/stats";
 import { Plus, MessageCircle, ChevronRight, Users, Clock, MapPin } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "600+", label: "Clients" },
-  { icon: Clock, value: "47 Yrs", label: "Experience" },
+  { icon: Users, value: STATS.doctors, label: "Clients" },
+  { icon: Clock, value: `${new Date().getFullYear() - STATS.founded} Yrs`, label: "Experience" },
   { icon: MapPin, value: "Pan-India", label: "Delivery" },
 ];
 
@@ -51,7 +52,7 @@ export default function Hero() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/15 border border-brand-accent/40 text-brand-deep text-xs font-semibold rounded-full">
                 <Plus className="w-3.5 h-3.5 text-brand-accent fill-brand-accent" />
-                Trusted by 600+ Doctors Since 1977
+                Trusted by {STATS.doctors} Doctors Since {STATS.founded}
               </span>
             </motion.div>
 
@@ -173,8 +174,8 @@ export default function Hero() {
             {/* Social proof below card */}
             <div className="mt-4 grid grid-cols-3 gap-3">
               {[
-                { num: "600+", txt: "Doctors" },
-                { num: "47+", txt: "Years" },
+                { num: STATS.doctors, txt: "Doctors" },
+                { num: `${new Date().getFullYear() - STATS.founded}+`, txt: "Years" },
                 { num: "100%", txt: "In-House" },
               ].map(({ num, txt }) => (
                 <div

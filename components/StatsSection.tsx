@@ -3,11 +3,13 @@
 import { useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 
+import { STATS } from "@/lib/stats";
+
 const stats = [
-  { value: 600, suffix: "+", label: "Doctors & Hospitals Served" },
-  { value: 47, suffix: "", label: "Years of Experience" },
-  { value: 2000, suffix: "+", label: "Projects Completed" },
-  { value: 15, suffix: "+", label: "In-House Team Members" },
+  { value: parseInt(STATS.doctors), suffix: "+", label: "Doctors & Hospitals Served" },
+  { value: new Date().getFullYear() - STATS.founded, suffix: "+", label: "Years of Experience" },
+  { value: parseInt(STATS.projects), suffix: "+", label: "Projects Completed" },
+  { value: parseInt(STATS.team), suffix: "+", label: "In-House Team Members" },
 ];
 
 function AnimatedCounter({

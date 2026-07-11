@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, Phone, MapPin } from "lucide-react";
+import { STATS } from "@/lib/stats";
 
 export default function CTABanner() {
   return (
@@ -31,7 +32,7 @@ export default function CTABanner() {
           {/* Subtext */}
           <p className="text-neutral-mid text-lg leading-relaxed max-w-xl mx-auto">
             Join{" "}
-            <strong className="text-neutral-dark font-semibold">600+ doctors</strong> who
+            <strong className="text-neutral-dark font-semibold">{STATS.doctors} doctors</strong> who
             trust Padmavati Enterprise for all their design and printing needs.
           </p>
 
