@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["padmavatienterprise.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "padmavatienterprise.com" },
+      { protocol: "https", hostname: "**.googleapis.com" },
+    ],
     formats: ["image/avif", "image/webp"],
   },
 };

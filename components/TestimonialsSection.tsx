@@ -1,7 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+function Avatar({ src, alt, initials }: { src: string; alt: string; initials: string }) {
+  const [error, setError] = useState(false);
+
+  return (
+    <div className="relative w-12 h-12 rounded-full overflow-hidden bg-brand-primary shrink-0 ring-2 ring-brand-secondary/30">
+      {!error ? (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover object-top"
+          sizes="48px"
+          onError={() => setError(true)}
+        />
+      ) : (
+        <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold bg-brand-primary">
+          {initials}
+        </span>
+      )}
+    </div>
+  );
+}
 
 const testimonials = [
   {
@@ -94,21 +118,9 @@ export default function TestimonialsSection() {
                 &ldquo;{quote}&rdquo;
               </p>
 
-              {/* Doctor info */}
+               {/* Doctor info */}
               <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-brand-primary shrink-0 ring-2 ring-brand-secondary/30">
-                  <Image
-                    src={image}
-                    alt={name}
-                    fill
-                    className="object-cover object-top"
-                    sizes="48px"
-                  />
-                  {/* Fallback initials (shown if image fails) */}
-                  <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold opacity-0">
-                    {initials}
-                  </span>
-                </div>
+                <Avatar src={image} alt={name} initials={initials} />
                 <div>
                   <p className="text-sm font-bold text-neutral-dark">{name}</p>
                   <p className="text-xs text-neutral-mid">

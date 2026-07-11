@@ -112,7 +112,7 @@ export default function ServicesPage() {
       />
 
       <div className="py-16 space-y-20 bg-white">
-        {categories.map((cat) => (
+        {categories.map((cat, index) => (
           <section key={cat.id} id={cat.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Category heading */}
             <div className="flex items-center gap-3 mb-3">
@@ -131,7 +131,9 @@ export default function ServicesPage() {
             </div>
 
             {/* Divider except last */}
-            <div className="mt-16 border-b border-gray-100" />
+            {index < categories.length - 1 && (
+              <div className="mt-16 border-b border-gray-100" />
+            )}
           </section>
         ))}
       </div>
