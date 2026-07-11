@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Plus, MessageCircle, ChevronRight, Users, Clock, MapPin } from "lucide-react";
 
@@ -140,41 +141,31 @@ export default function Hero() {
             animate="show"
             className="lg:col-span-2"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              {/* Gradient background card */}
-              <div
-                className="w-full h-full flex flex-col items-center justify-center p-8 text-center"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #0077B6 0%, #00B4D8 60%, #90BE6D 100%)",
-                }}
-              >
-                {/* TODO: Replace with actual product image */}
-                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 border border-white/30">
-                  <Plus className="w-8 h-8 text-white" />
-                </div>
-                <p className="text-white text-xl font-bold mb-2">
-                  Your Portfolio Preview
-                </p>
-                <p className="text-white/75 text-sm">
-                  Doctor files · Letterheads · Visiting Cards · Brochures
-                </p>
+            {/* ─── Product photo mosaic ─── */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              {/* Large main image */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/hero/explore-products.png"
+                  alt="Padmavati Enterprise product range — doctor files, letterheads, visiting cards"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+                {/* Gradient overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
 
-                {/* Decorative dots */}
-                <div className="absolute bottom-6 left-6 flex gap-1.5">
-                  {[1, 2, 3].map((i) => (
-                    <span
-                      key={i}
-                      className="w-2 h-2 rounded-full bg-white/40"
-                    />
-                  ))}
+                {/* Since 1977 badge */}
+                <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">
+                  <span className="text-brand-primary text-xs font-bold">Since 1977 ✦</span>
                 </div>
 
-                {/* Floating badge */}
-                <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                  <span className="text-white text-xs font-semibold">
-                    Since 1977
-                  </span>
+                {/* Bottom caption */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white text-sm font-semibold drop-shadow-sm">
+                    Doctor Files · Letterheads · Visiting Cards · Brochures
+                  </p>
                 </div>
               </div>
             </div>

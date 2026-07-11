@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
@@ -15,6 +16,7 @@ const portfolioItems = [
     category: "Doctor Files" as Category,
     client: "Nidaan Clinic",
     location: "Ahmedabad",
+    image: "/portfolio/nidaan-clinic.jpg",
     gradient: "from-brand-primary to-brand-secondary",
   },
   {
@@ -22,6 +24,7 @@ const portfolioItems = [
     category: "Brochures" as Category,
     client: "Dr. Sanjay Shah",
     location: "Ahmedabad",
+    image: "/portfolio/dr-sanjay-shah-brochure.jpg",
     gradient: "from-brand-secondary to-brand-accent",
   },
   {
@@ -29,6 +32,7 @@ const portfolioItems = [
     category: "Letterhead" as Category,
     client: "Shreyan Hospital",
     location: "Ahmedabad",
+    image: "/portfolio/shreyan-letterhead.jpg",
     gradient: "from-brand-navy to-brand-primary",
   },
   {
@@ -36,6 +40,7 @@ const portfolioItems = [
     category: "Visiting Cards" as Category,
     client: "Cure Sight Laser Center",
     location: "Ahmedabad",
+    image: "/portfolio/cure-sight-visiting-card.jpg",
     gradient: "from-brand-primary to-brand-accent",
   },
   {
@@ -43,6 +48,7 @@ const portfolioItems = [
     category: "Logo Design" as Category,
     client: "Max Hospital",
     location: "India",
+    image: "/portfolio/logo-sample.png",
     gradient: "from-brand-accent to-brand-secondary",
   },
   {
@@ -50,6 +56,7 @@ const portfolioItems = [
     category: "Doctor Files" as Category,
     client: "Chirayu Hospital",
     location: "Ahmedabad",
+    image: "/portfolio/stationery-sample.png",
     gradient: "from-brand-navy to-brand-secondary",
   },
 ];
@@ -134,17 +141,14 @@ export default function PortfolioPreview() {
               >
                 {/* Image area */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  {/* TODO: Replace gradient placeholders with actual <Image> of portfolio work */}
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${item.gradient} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}
-                  >
-                    {/* Decorative inner card mock */}
-                    <div className="w-2/3 h-3/5 bg-white/20 rounded-xl backdrop-blur-sm border border-white/30 flex flex-col items-center justify-center gap-2">
-                      <div className="w-8 h-1 rounded-full bg-white/60" />
-                      <div className="w-12 h-1 rounded-full bg-white/40" />
-                      <div className="w-10 h-1 rounded-full bg-white/50" />
-                    </div>
-                  </div>
+                  {/* Real portfolio image */}
+                  <Image
+                    src={item.image}
+                    alt={`${item.category} for ${item.client}`}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
 
                   {/* Category badge */}
                   <span

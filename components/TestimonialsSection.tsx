@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const testimonials = [
@@ -8,6 +9,7 @@ const testimonials = [
       "Professional and timely delivery of well designed patient files and other requirements for the hospital are fulfilled.",
     name: "Dr. Kaushik Shah",
     initials: "KS",
+    image: "/testimonials/dr-kaushik-shah.png",
     hospital: "AIMS Hospital",
     city: "Mandvi",
   },
@@ -16,6 +18,7 @@ const testimonials = [
       "Multiple design options ranging from minimalistic to complex designs for various purposes. Truly a one-stop solution.",
     name: "Dr. Nitesh Patel",
     initials: "NP",
+    image: "/testimonials/dr-nitesh-patel.png",
     hospital: "Samarapan Hospital",
     city: "Ahmedabad",
   },
@@ -24,6 +27,7 @@ const testimonials = [
       "Indeed served as a one stop solution for all hospital needs pertaining not just to printing and design but stationery requirements as well.",
     name: "Dr. Amit Gupta",
     initials: "AG",
+    image: "/testimonials/dr-amit-gupta.png",
     hospital: "Usmanpura Imaging Center",
     city: "Ahmedabad",
   },
@@ -51,7 +55,7 @@ export default function TestimonialsSection() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map(({ quote, name, initials, hospital, city }, i) => (
+          {testimonials.map(({ quote, name, initials, image, hospital, city }, i) => (
             <motion.div
               key={name}
               initial={{ opacity: 0, y: 32 }}
@@ -88,8 +92,18 @@ export default function TestimonialsSection() {
 
               {/* Doctor info */}
               <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center shrink-0">
-                  <span className="text-white text-xs font-bold">{initials}</span>
+                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-brand-primary shrink-0 ring-2 ring-brand-secondary/30">
+                  <Image
+                    src={image}
+                    alt={name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="48px"
+                  />
+                  {/* Fallback initials (shown if image fails) */}
+                  <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold opacity-0">
+                    {initials}
+                  </span>
                 </div>
                 <div>
                   <p className="text-sm font-bold text-neutral-dark">{name}</p>
