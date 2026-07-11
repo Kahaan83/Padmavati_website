@@ -124,7 +124,7 @@ export default function ServicesPage() {
             <p className="text-neutral-mid mb-8 max-w-xl">{cat.subtitle}</p>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {cat.services.map((svc) => (
                 <ServiceCard key={svc.name} icon={svc.icon} name={svc.name} desc={svc.desc} />
               ))}

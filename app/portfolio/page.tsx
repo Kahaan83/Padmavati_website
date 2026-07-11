@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Eye } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 
@@ -9,16 +10,6 @@ import PageHeader from "@/components/PageHeader";
 type Tab = "All" | "Doctor Files" | "Visiting Cards" | "Letterheads" | "Logos" | "Brochures" | "Envelopes" | "NABH Forms";
 const TABS: Tab[] = ["All", "Doctor Files", "Visiting Cards", "Letterheads", "Logos", "Brochures", "Envelopes", "NABH Forms"];
 
-/* ─── Gradient per category ─── */
-const gradients: Record<string, string> = {
-  "Doctor Files":   "from-brand-primary to-brand-secondary",
-  "Visiting Cards": "from-brand-secondary to-brand-accent",
-  Letterheads:      "from-brand-navy to-brand-primary",
-  Logos:            "from-brand-accent to-brand-secondary",
-  Brochures:        "from-brand-primary to-brand-accent",
-  Envelopes:        "from-brand-navy to-brand-secondary",
-  "NABH Forms":     "from-brand-deep to-brand-primary",
-};
 
 const badgeColors: Record<string, string> = {
   "Doctor Files":   "bg-brand-primary",
@@ -53,30 +44,37 @@ const items = [
 ] as const;
 
 /* ─── Portfolio Card ─── */
-function PortfolioCard({ category, client, location }: { category: string; client: string; location: string }) {
+function PortfolioCard({ category, client, location, index }: { category: string; client: string; location: string; index: number }) {
+  // Map categories to real downloaded image assets
+  const categoryImages: Record<string, string> = {
+    "Doctor Files": "/portfolio/nidaan-clinic.jpg",
+    "Visiting Cards": "/portfolio/cure-sight-visiting-card.jpg",
+    Letterheads: "/portfolio/shreyan-letterhead.jpg",
+    Logos: "/portfolio/logo-sample.png",
+    Brochures: "/portfolio/dr-sanjay-shah-brochure.jpg",
+    Envelopes: "/portfolio/letterpad-sample.png",
+    "NABH Forms": "/portfolio/stationery-sample.png",
+  };
+
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.25, delay: index * 0.04, ease: "easeOut" }}
       className="group rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300"
     >
       {/* Image area */}
-      <div className="relative aspect-[4/3] overflow-hidden">
-        {/* TODO: Replace placeholder cards with real portfolio <Image> components */}
-        <div
-          className={`w-full h-full bg-gradient-to-br ${gradients[category] ?? "from-brand-primary to-brand-secondary"} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}
-        >
-          {/* Document mock */}
-          <div className="w-3/5 h-3/4 bg-white/20 rounded-xl backdrop-blur-sm border border-white/30 flex flex-col gap-2 items-center justify-center p-4">
-            <div className="w-10 h-1.5 rounded-full bg-white/70" />
-            <div className="w-14 h-1 rounded-full bg-white/50" />
-            <div className="w-12 h-1 rounded-full bg-white/40" />
-            <div className="w-8 h-1 rounded-full bg-white/30" />
-          </div>
-        </div>
+      <div className="relative aspect-[4/3] overflow-hidden bg-neutral-surface">
+        <Image
+          src={categoryImages[category] || "/portfolio/nidaan-clinic.jpg"}
+          alt={`${category} designed and printed by Padmavati Enterprise for ${client}`}
+          fill
+          loading="lazy"
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
 
         {/* Badge */}
         <span className={`absolute top-3 left-3 px-2.5 py-1 ${badgeColors[category] ?? "bg-brand-primary"} text-white text-[10px] font-bold rounded-full uppercase tracking-wider`}>
@@ -160,12 +158,13 @@ export default function PortfolioPage() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
+            {filtered.map((item, idx) => (
               <PortfolioCard
                 key={item.id}
                 category={item.category}
                 client={item.client}
                 location={item.location}
+                index={idx}
               />
             ))}
           </AnimatePresence>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PageProgressBar from "@/components/PageProgressBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,7 +50,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-sans bg-white text-neutral-dark antialiased">
+        <PageProgressBar />
         <Navbar />
         <main>{children}</main>
         <Footer />

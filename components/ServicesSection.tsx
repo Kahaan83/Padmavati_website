@@ -71,7 +71,7 @@ const services = [
 const containerVariants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.07 },
+    transition: { staggerChildren: 0.05 },
   },
 };
 
@@ -109,7 +109,7 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
+          className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-3 lg:grid-cols-5 gap-4"
         >
           {services.map(({ icon: Icon, name, desc }) => (
             <motion.div

@@ -106,7 +106,7 @@ export default function PortfolioPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
+          className="flex items-center gap-2 pb-4 overflow-x-auto scrollbar-hide mb-10 md:justify-center md:flex-wrap border-b border-gray-50 md:border-none"
         >
           {tabs.map((tab) => (
             <button
@@ -129,14 +129,14 @@ export default function PortfolioPreview() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
+            {filtered.map((item, idx) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+                transition={{ duration: 0.3, delay: idx * 0.04, ease: "easeOut" }}
                 className="group rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300 bg-white"
               >
                 {/* Image area */}

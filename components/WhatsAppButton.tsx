@@ -1,25 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
   const [hovered, setHovered] = useState(false);
+  const [showAutoTooltip, setShowAutoTooltip] = useState(false);
+
+  useEffect(() => {
+    // Reset tooltip state on path change
+    setShowAutoTooltip(false);
+
+    if (pathname === "/contact") {
+      return;
+    }
+
+    // Show after 5 seconds
+    const showTimer = setTimeout(() => {
+      setShowAutoTooltip(true);
+    }, 5000);
+
+    // Hide after 9 seconds (5s wait + 4s display)
+    const hideTimer = setTimeout(() => {
+      setShowAutoTooltip(false);
+    }, 9000);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [pathname]);
+
+  const isVisible = hovered || showAutoTooltip;
+  const tooltipText = showAutoTooltip
+    ? "Need help with clinic branding? Chat with us →"
+    : "Chat with us on WhatsApp";
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-      {/* Tooltip */}
+      {/* Tooltip bubble */}
       <div
         className={`
-          pointer-events-none bg-neutral-dark text-white text-xs font-medium
-          px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap
-          transition-all duration-200
-          ${hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"}
+          pointer-events-none bg-neutral-dark text-white text-xs font-semibold
+          px-3.5 py-2 rounded-xl shadow-xl whitespace-nowrap relative
+          transition-all duration-300 ease-out
+          ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"}
         `}
       >
-        Chat with us on WhatsApp
+        {tooltipText}
         {/* Tooltip arrow */}
-        <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 w-2 h-2 bg-neutral-dark rotate-45" />
+        <span className="absolute right-4 bottom-[-4px] w-2.5 h-2.5 bg-neutral-dark rotate-45" />
       </div>
 
       {/* Button with pulse ring */}
@@ -33,6 +65,7 @@ export default function WhatsAppButton() {
           rel="noopener noreferrer"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          onClick={() => setShowAutoTooltip(false)}
           aria-label="Chat with us on WhatsApp"
           className="
             relative z-10 flex items-center justify-center

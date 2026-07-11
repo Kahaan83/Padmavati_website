@@ -62,7 +62,7 @@ export default function ContactPage() {
   }
 
   const inputClass =
-    "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-neutral-dark bg-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary transition-all duration-150";
+    "w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm text-neutral-dark bg-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary transition-all duration-150";
 
   const labelClass = "block text-xs font-semibold text-neutral-dark mb-1.5 uppercase tracking-wider";
 

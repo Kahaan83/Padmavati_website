@@ -58,10 +58,14 @@ export default function TestimonialsSection() {
           {testimonials.map(({ quote, name, initials, image, hospital, city }, i) => (
             <motion.div
               key={name}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{
+                opacity: 0,
+                x: i === 0 ? -30 : i === 2 ? 30 : 0,
+                y: i === 1 ? 30 : 0,
+              }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
               className="relative bg-white rounded-2xl p-7 flex flex-col gap-5 shadow-lg"
             >
               {/* Large quote mark */}

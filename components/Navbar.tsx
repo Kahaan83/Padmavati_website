@@ -55,18 +55,18 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link
+                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                  className={`relative px-4 py-2.5 text-sm font-semibold transition-colors duration-200 ${
                     isActive
                       ? "text-brand-primary"
-                      : "text-neutral-dark hover:text-brand-primary hover:bg-blue-50"
+                      : "text-neutral-dark hover:text-brand-primary hover:bg-blue-50/50"
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-brand-secondary" />
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-brand-primary rounded-full" />
                   )}
                 </Link>
               );
@@ -107,9 +107,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 ${
+                  onClick={() => setIsOpen(false)}
+                  className={`flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-colors duration-150 ${
                     isActive
-                      ? "bg-blue-50 text-brand-primary border-l-2 border-brand-secondary"
+                      ? "bg-blue-50 text-brand-primary border-l-4 border-brand-primary"
                       : "text-neutral-dark hover:bg-gray-50 hover:text-brand-primary"
                   }`}
                 >
@@ -123,6 +124,7 @@ export default function Navbar() {
               href="https://wa.me/919426338720?text=Hi%2C%20I%20need%20help%20with%20clinic%20branding"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
               className="flex items-center justify-center gap-2 mx-4 my-3 px-4 py-3 bg-brand-primary text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-brand-navy"
             >
               <Phone className="w-4 h-4" />
