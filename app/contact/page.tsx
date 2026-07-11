@@ -41,41 +41,15 @@ export default function ContactPage() {
     setFormState("submitting");
 
     try {
-      // --- Option 1: EmailJS Integration ---
-      // 1. Sign up at https://www.emailjs.com/
-      // 2. Create an Email Service & Email Template.
-      // 3. Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' below with your EmailJS credentials.
-      const emailjsPayload = {
-        service_id: "YOUR_SERVICE_ID",
-        template_id: "YOUR_TEMPLATE_ID",
-        user_id: "YOUR_PUBLIC_KEY",
-        template_params: {
-          from_name: formData.name,
-          clinic_name: formData.clinic,
-          phone_number: formData.phone,
-          city: formData.city,
-          requested_service: formData.service,
-          message: formData.message,
-        },
-      };
-
-      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(emailjsPayload),
-      });
-
-      // --- Option 2: Formspree (Alternative) ---
-      // If you prefer Formspree, uncomment this block and comment out the EmailJS block above:
-      /*
+      /* TODO: Replace YOUR_FORM_ID with your Formspree form ID from formspree.io
+         — free account allows 50 submissions/month */
       const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
       });
-      */
 
-      if (res.ok || res.status === 200) {
+      if (res.ok) {
         setFormState("success");
         setFormData({ name: "", clinic: "", phone: "", city: "", service: "", message: "" });
       } else {
