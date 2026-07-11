@@ -139,11 +139,10 @@ export default function AboutPage() {
               <h3 className="text-lg font-bold text-white/80 mb-8 uppercase tracking-wider text-sm">
                 Our Numbers
               </h3>
-              <div className="grid grid-cols-2 gap-y-8 gap-x-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-y-8">
                 {[
                   { num: STATS.doctors,  label: "Doctors & Hospitals Served" },
-                  { num: `${new Date().getFullYear() - STATS.founded}`,    label: "Years of Experience" },
-                  { num: STATS.projects, label: "Projects Completed" },
+                  { num: `${new Date().getFullYear() - STATS.founded}+`, label: "Years of Experience" },
                   { num: STATS.team,     label: "In-House Team Members" },
                 ].map(({ num, label }) => (
                   <div key={label}>

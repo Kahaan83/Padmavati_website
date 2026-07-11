@@ -53,7 +53,7 @@ export default function Hero() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/15 border border-brand-accent/40 text-brand-deep text-xs font-semibold rounded-full">
                 <Plus className="w-3.5 h-3.5 text-brand-accent fill-brand-accent" />
-                Trusted by {STATS.doctors} Doctors Since {STATS.founded}
+                Trusted by Doctors Since {STATS.founded}
               </span>
             </motion.div>
 

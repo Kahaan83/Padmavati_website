@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { STATS } from "@/lib/stats";
 
 type Category = "All" | "Doctor Files" | "Visiting Cards" | "Letterhead" | "Logo Design" | "Brochures";
 
@@ -97,7 +96,7 @@ export default function PortfolioPreview() {
             Our Work Speaks for Itself
           </h2>
           <p className="text-neutral-mid text-base leading-relaxed">
-            A glimpse of what we&apos;ve created for {STATS.doctors} doctors and hospitals across India
+            A glimpse of our work for doctors and hospitals across India
           </p>
         </motion.div>
 

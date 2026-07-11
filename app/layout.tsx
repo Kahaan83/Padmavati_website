@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Padmavati Enterprise",
   },
   description:
-    "Complete healthcare branding, design and print solutions for doctors and hospitals. Doctor files, visiting cards, letterheads, NABH forms and more. Serving 600+ clients since 1977.",
+    "Complete healthcare branding, design and print solutions for doctors and hospitals. Doctor files, visiting cards, letterheads, NABH forms and more. Serving 2000+ clients since 1977.",
   keywords: [
     "medical printing Ahmedabad",
     "doctor files",
