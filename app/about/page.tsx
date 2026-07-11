@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Home, Stethoscope, Zap, Globe, CheckCircle2, MessageSquare, Sparkles, TrendingUp, Users, Target } from "lucide-react";
+import { Stethoscope, Zap, Globe, CheckCircle2, MessageSquare, Sparkles, TrendingUp, Users, Target } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTABanner from "@/components/CTABanner";
-import StatsSection from "@/components/StatsSection";
 
 export const metadata: Metadata = {
   title: "About Us",

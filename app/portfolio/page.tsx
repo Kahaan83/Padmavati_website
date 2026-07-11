@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye } from "lucide-react";
 import PageHeader from "@/components/PageHeader";

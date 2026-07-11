@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
                 aria-hidden="true"
                 className="absolute top-5 right-6 text-7xl font-serif leading-none text-brand-secondary/20 select-none"
               >
-                "
+                &ldquo;
               </span>
 
               {/* Star row */}

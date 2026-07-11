@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
-  FolderOpen, Package, FileText, Mail, ClipboardList, FileCheck, FilePlus, Files,
+  FolderOpen, Package, FileText, Mail, ClipboardList, FileCheck, FilePlus,
   Palette, CreditCard, BookOpen, Megaphone, PartyPopper, BookMarked,
   Cpu, Disc3, IdCard, Tag, ShoppingBag, Baby, Layers, Shirt,
   MessageCircle,
