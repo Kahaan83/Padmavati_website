@@ -1,6 +1,8 @@
 export const CONTACT = {
   phone1: "+91 94 2633 8720",
+  phone1Raw: "+919426338720",
   phone2: "+91 94 2880 1716",
+  phone2Raw: "+919428801716",
   whatsapp: "https://wa.me/919426338720",
   email: "sarthaktradingco@gmail.com",
   address: "7/38, Patrakar Colony, Near Vijay Nagar School, Vijaynagar, Naranpura, Ahmedabad – 380 013",
@@ -8,3 +10,7 @@ export const CONTACT = {
   responseTime: "We respond within 2 hours on WhatsApp",
 } as const;
 
+/** Build a WhatsApp deep-link with a pre-filled message */
+export function getWhatsAppLink(message: string): string {
+  return `${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
+}

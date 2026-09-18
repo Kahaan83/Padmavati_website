@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MessageCircle, Home } from "lucide-react";
-import { CONTACT } from "@/lib/contact";
+import { getWhatsAppLink } from "@/lib/contact";
 
 export const metadata = {
   title: "404 Page Not Found | Padmavati Enterprise",
@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-white px-4 sm:px-6 lg:px-8 py-16 text-center">
       {/* 404 Heading */}
-      <h1 className="text-8xl sm:text-9xl font-extrabold text-brand-navy tracking-tight animate-pulse">
+      <h1 className="text-8xl sm:text-9xl font-extrabold text-brand-navy tracking-tight">
         404
       </h1>
 
@@ -33,10 +33,10 @@ export default function NotFound() {
         </Link>
 
         <a
-          href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20got%20a%20404%20error%20on%20your%20website`}
+          href={getWhatsAppLink("Hi, I got a 404 error on your website")}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold text-sm rounded-xl transition-all duration-200"
+          className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-whatsapp text-whatsapp hover:bg-whatsapp hover:text-white font-bold text-sm rounded-xl transition-all duration-200"
         >
           <MessageCircle className="w-4 h-4" />
           Or WhatsApp us if you need help

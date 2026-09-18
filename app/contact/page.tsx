@@ -47,7 +47,7 @@ export default function ContactPage() {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) newErrors.name = "Full name is required";
-    if (!formData.hospital.trim()) newErrors.hospital = "Hospital / Hospital name is required";
+    if (!formData.hospital.trim()) newErrors.hospital = "Hospital or clinic name is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.service) newErrors.service = "Please select a service";
 
@@ -117,9 +117,6 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-brand-primary mb-3">Get in Touch</h2>
-                <p className="text-neutral-mid leading-relaxed">
-                  We respond within a few hours on WhatsApp. For urgent requirements, call us directly.
-                </p>
               </div>
 
               {/* Contact blocks */}
@@ -144,10 +141,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-1">Phone</p>
-                    <a href={`tel:${CONTACT.phone1.replace(/\s+/g, "")}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
+                    <a href={`tel:${CONTACT.phone1Raw}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
                       {CONTACT.phone1}
                     </a>
-                    <a href={`tel:${CONTACT.phone2.replace(/\s+/g, "")}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
+                    <a href={`tel:${CONTACT.phone2Raw}`} className="block text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors">
                       {CONTACT.phone2}
                     </a>
                   </div>
@@ -162,7 +159,7 @@ export default function ContactPage() {
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-1">Email</p>
                     <a
                       href={`mailto:${CONTACT.email}`}
-                      className="text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors break-all animate-pulse"
+                      className="text-sm text-brand-primary hover:text-brand-navy font-medium transition-colors break-all"
                     >
                       {CONTACT.email}
                     </a>
@@ -174,8 +171,8 @@ export default function ContactPage() {
 
                 {/* WhatsApp */}
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  <div className="w-10 h-10 rounded-xl bg-whatsapp/15 flex items-center justify-center shrink-0">
+                    <MessageCircle className="w-5 h-5 text-whatsapp" />
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-neutral-mid uppercase tracking-wider mb-2">WhatsApp</p>
@@ -183,9 +180,9 @@ export default function ContactPage() {
                       href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20enquire%20about%20your%20services`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
                     >
-                      <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                      <MessageCircle className="w-4 h-4" strokeWidth={2} />
                       Chat on WhatsApp
                     </a>
                   </div>
@@ -201,7 +198,7 @@ export default function ContactPage() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-neutral-mid">Monday – Saturday</span>
-                    <span className="font-semibold text-neutral-dark">9:00 AM – 7:00 PM</span>
+                    <span className="font-semibold text-neutral-dark">10:00 AM – 7:00 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-mid">Sunday</span>
@@ -254,7 +251,7 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name + Hospital */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -268,7 +265,7 @@ export default function ContactPage() {
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
                     <div>
-                      <label htmlFor="hospital" className={labelClass}>Hospital / Hospital Name *</label>
+                      <label htmlFor="hospital" className={labelClass}>Hospital / Clinic Name *</label>
                       <input
                         id="hospital" name="hospital" type="text" required
                         placeholder="City Heart Hospital"
@@ -350,9 +347,9 @@ export default function ContactPage() {
                       href={`${CONTACT.whatsapp}?text=Hi%2C%20I%27d%20like%20to%20get%20in%20touch%20directly`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-whatsapp hover:bg-whatsapp-hover text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-sm"
                     >
-                      <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                      <MessageCircle className="w-4 h-4" strokeWidth={2} />
                       Chat on WhatsApp
                     </a>
                     <a

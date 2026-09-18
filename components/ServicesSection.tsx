@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   FolderOpen,
   FileText,
@@ -20,51 +21,61 @@ const services = [
     icon: FolderOpen,
     name: "Doctor Files & PP Files",
     desc: "Premium patient files with UV printing, anti-scratch coating",
+    href: "/services#stationery",
   },
   {
     icon: FileText,
     name: "Letterheads & Prescription Pads",
     desc: "Branded prescription pads and hospital letterheads",
+    href: "/services#stationery",
   },
   {
     icon: CreditCard,
     name: "Visiting Cards",
     desc: "Premium quality visiting cards for doctors",
+    href: "/services#branding",
   },
   {
     icon: BookOpen,
     name: "Brochures & Flyers",
     desc: "3-fold, 4-fold hospital brochures",
+    href: "/services#branding",
   },
   {
     icon: Pen,
     name: "Logo Design",
     desc: "Complete hospital brand identity from scratch",
+    href: "/services#branding",
   },
   {
     icon: ClipboardList,
     name: "NABH Forms & Consent Forms",
     desc: "All required hospital documentation",
+    href: "/services#stationery",
   },
   {
     icon: Package,
     name: "Envelopes & X-Ray Bags",
     desc: "Hospital envelopes and MRI/X-Ray report bags",
+    href: "/services#stationery",
   },
   {
     icon: Baby,
     name: "New Born Baby Kit",
     desc: "Printed kits for newborn departments",
+    href: "/services#peripherals",
   },
   {
     icon: IdCard,
     name: "ID Cards & Wristbands",
     desc: "Staff IDs and patient wristbands",
+    href: "/services#peripherals",
   },
   {
     icon: Usb,
     name: "Printed Pendrives & CD Covers",
     desc: "Branded medical media",
+    href: "/services#peripherals",
   },
 ];
 
@@ -109,29 +120,30 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-3 lg:grid-cols-5 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
         >
-          {services.map(({ icon: Icon, name, desc }) => (
-            <motion.div
-              key={name}
-              variants={cardVariants}
-              className="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-brand-secondary transition-all duration-250 cursor-default flex flex-col gap-3"
-            >
-              {/* Icon box */}
-              <div className="w-11 h-11 rounded-xl bg-neutral-surface flex items-center justify-center group-hover:bg-brand-primary/10 transition-colors duration-200 shrink-0">
-                <Icon className="w-5 h-5 text-brand-primary" strokeWidth={1.75} />
-              </div>
+          {services.map(({ icon: Icon, name, desc, href }) => (
+            <motion.div key={name} variants={cardVariants}>
+              <Link
+                href={href}
+                className="group relative bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-brand-secondary transition-all duration-200 cursor-pointer flex flex-col gap-3 h-full"
+              >
+                {/* Icon box */}
+                <div className="w-11 h-11 rounded-xl bg-neutral-surface flex items-center justify-center group-hover:bg-brand-primary/10 transition-colors duration-200 shrink-0">
+                  <Icon className="w-5 h-5 text-brand-primary" strokeWidth={1.75} />
+                </div>
 
-              {/* Text */}
-              <div>
-                <p className="text-sm font-semibold text-neutral-dark leading-snug mb-1">
-                  {name}
-                </p>
-                <p className="text-xs text-neutral-mid leading-relaxed">{desc}</p>
-              </div>
+                {/* Text */}
+                <div>
+                  <p className="text-sm font-semibold text-neutral-dark leading-snug mb-1">
+                    {name}
+                  </p>
+                  <p className="text-xs text-neutral-mid leading-relaxed">{desc}</p>
+                </div>
 
-              {/* Hover accent line */}
-              <span className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-brand-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {/* Hover accent line */}
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-brand-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -149,13 +161,10 @@ export default function ServicesSection() {
             className="inline-flex items-center gap-1.5 text-brand-primary font-semibold text-sm hover:text-brand-navy transition-colors group"
           >
             See full product range
-            <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">
-              →
-            </span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
         </motion.div>
       </div>
     </section>
   );
 }
-

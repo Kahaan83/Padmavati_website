@@ -69,7 +69,8 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.55 }}
           className="text-center max-w-xl mx-auto mb-14"
         >
-          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase rounded-full bg-white/10 text-brand-secondary border border-white/20">
+          {/* Badge with improved contrast: white text on navy — use white/20 bg */}
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase rounded-full bg-white/15 text-white border border-white/25">
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white text-balance">
@@ -77,18 +78,14 @@ export default function TestimonialsSection() {
           </h2>
         </motion.div>
 
-        {/* Cards */}
+        {/* Cards — uniform fade-up animation (no x-slide to prevent mobile jitter) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map(({ quote, name, initials, image, hospital, city }, i) => (
             <motion.div
               key={name}
-              initial={{
-                opacity: 0,
-                x: i === 0 ? -30 : i === 2 ? 30 : 0,
-                y: i === 1 ? 30 : 0,
-              }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
               className="relative bg-white rounded-2xl p-7 flex flex-col gap-5 shadow-lg"
             >
@@ -100,11 +97,12 @@ export default function TestimonialsSection() {
                 &ldquo;
               </span>
 
-              {/* Star row */}
-              <div className="flex gap-0.5">
+              {/* Star row — accessible rating */}
+              <div className="flex gap-0.5" role="img" aria-label="5 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <svg
                     key={s}
+                    aria-hidden="true"
                     className="w-4 h-4 text-brand-accent fill-brand-accent"
                     viewBox="0 0 20 20"
                   >
@@ -118,7 +116,7 @@ export default function TestimonialsSection() {
                 &ldquo;{quote}&rdquo;
               </p>
 
-               {/* Doctor info */}
+              {/* Doctor info */}
               <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
                 <Avatar src={image} alt={name} initials={initials} />
                 <div>
@@ -135,4 +133,3 @@ export default function TestimonialsSection() {
     </section>
   );
 }
-

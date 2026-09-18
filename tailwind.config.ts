@@ -16,14 +16,19 @@ const config: Config = {
           deep: "#2D6A4F",
           navy: "#1B4F72",
         },
+        whatsapp: {
+          DEFAULT: "#25D366",
+          dark: "#128C7E",
+          hover: "#1EBE5A",
+        },
         neutral: {
           dark: "#2C2C2C",
-          mid: "#7A7A7A",
+          mid: "#525252",   // upgraded from #7A7A7A → now passes WCAG AA (7:1 on white)
           surface: "#F8FAFC",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
       },
     },
   },
@@ -31,4 +36,3 @@ const config: Config = {
 };
 
 export default config;
-

@@ -49,25 +49,29 @@ const focus = [
   {
     icon: Sparkles,
     label: "Creativity",
-    color: "bg-brand-primary/10 text-brand-primary",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
     desc: "Fresh, modern designs that make your hospital stand out and inspire patient confidence.",
   },
   {
     icon: TrendingUp,
     label: "Innovation",
-    color: "bg-brand-secondary/10 text-brand-secondary",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
     desc: "We constantly update our processes — UV printing, anti-scratch lamination, digital proofing before every print run.",
   },
   {
     icon: Target,
     label: "Productivity",
-    color: "bg-brand-accent/15 text-brand-deep",
+    iconBg: "bg-brand-accent/15",
+    iconColor: "text-brand-deep",
     desc: "Our streamlined in-house workflow means you spend less time chasing printers and more time with patients.",
   },
   {
     icon: Users,
     label: "Success",
-    color: "bg-brand-navy/10 text-brand-navy",
+    iconBg: "bg-brand-navy/10",
+    iconColor: "text-brand-navy",
     desc: `Your professional image is our success metric. ${STATS.doctors} satisfied clients across Gujarat and India since ${STATS.founded}.`,
   },
 ];
@@ -95,7 +99,7 @@ export default function AboutPage() {
                 Our Story
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-brand-primary mb-6 leading-snug">
-                Built for Healthcare. <br className="hidden sm:block" />Trusted for {new Date().getFullYear() - STATS.founded} Years.
+                Built for Healthcare. <br className="hidden sm:block" />Trusted for {STATS.yearsExperience} Years.
               </h2>
               <div className="space-y-5 text-neutral-mid leading-relaxed text-[15px]">
                 <p>
@@ -141,14 +145,14 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:grid-cols-1 lg:gap-y-8">
                 {[
-                  { num: STATS.doctors,  label: "Doctors & Hospitals Served" },
-                  { num: `${new Date().getFullYear() - STATS.founded}+`, label: "Years of Experience" },
-                  { num: STATS.team,     label: "In-House Team Members" },
+                  { num: STATS.doctors,           label: "Doctors & Hospitals Served" },
+                  { num: STATS.yearsExperience,   label: "Years of Experience" },
+                  { num: STATS.team,              label: "In-House Team Members" },
                 ].map(({ num, label }) => (
                   <div key={label}>
                     <p className="text-4xl font-extrabold leading-none">{num}</p>
-                    <div className="w-6 h-0.5 rounded-full bg-white/30 my-2" />
-                    <p className="text-xs text-white/70 leading-snug">{label}</p>
+                    <div className="w-6 h-0.5 rounded-full bg-white/40 my-2" />
+                    <p className="text-xs text-white/90 leading-snug">{label}</p>
                   </div>
                 ))}
               </div>
@@ -203,13 +207,13 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {focus.map(({ icon: Icon, label, color, desc }) => (
+            {focus.map(({ icon: Icon, label, iconBg, iconColor, desc }) => (
               <div
                 key={label}
                 className="rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-7 flex flex-col items-center text-center gap-4"
               >
-                <div className={`w-14 h-14 rounded-2xl ${color.split(" ")[0]} flex items-center justify-center`}>
-                  <Icon className={`w-7 h-7 ${color.split(" ")[1]}`} strokeWidth={1.75} />
+                <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center`}>
+                  <Icon className={`w-7 h-7 ${iconColor}`} strokeWidth={1.75} />
                 </div>
                 <p className="text-base font-bold text-neutral-dark">{label}</p>
                 <p className="text-xs text-neutral-mid leading-relaxed">{desc}</p>

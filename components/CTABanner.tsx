@@ -23,11 +23,7 @@ export default function CTABanner() {
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-primary leading-tight text-balance">
-            Ready to Give Your Hospital a{" "}
-            <span className="relative inline-block">
-              Professional Look?
-              <span className="absolute -bottom-1 left-0 w-full h-1 rounded-full bg-gradient-to-r from-brand-secondary to-brand-accent opacity-70" />
-            </span>
+            Ready to Give Your Hospital a Professional Look?
           </h2>
 
           {/* Subtext */}
@@ -37,24 +33,24 @@ export default function CTABanner() {
             trust Padmavati Enterprise for all their design and printing needs.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
+          {/* Buttons — full width on mobile, auto on sm+ */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 w-full max-w-md mx-auto">
             <a
               href={`${CONTACT.whatsapp}?text=Hi%2C%20I%27m%20interested%20in%20hospital%20branding`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-4 bg-brand-primary hover:bg-brand-navy text-white font-bold text-base rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-brand-primary hover:bg-brand-navy text-white font-bold text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
             >
               <MessageCircle className="w-5 h-5" />
               WhatsApp Us Now
             </a>
 
             <a
-              href={`tel:${CONTACT.phone1.replace(/\s+/g, "")}`}
-              className="inline-flex items-center gap-2.5 px-8 py-4 border-2 border-brand-primary text-brand-primary font-bold text-base rounded-2xl hover:bg-brand-primary hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              href={`tel:${CONTACT.phone1Raw}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 border-2 border-brand-primary text-brand-primary font-bold text-base rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
             >
               <Phone className="w-5 h-5" />
-              Call Us: {CONTACT.phone1}
+              Call: {CONTACT.phone1}
             </a>
           </div>
 
@@ -68,4 +64,3 @@ export default function CTABanner() {
     </section>
   );
 }
-

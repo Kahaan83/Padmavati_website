@@ -30,7 +30,7 @@ export default function PageProgressBar() {
   if (!active) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999] h-1 pointer-events-none">
+    <div aria-hidden="true" className="fixed top-0 left-0 right-0 z-[9999] h-1 pointer-events-none">
       <div
         className="h-full bg-brand-secondary transition-all duration-300 ease-out"
         style={{ width: `${width}%` }}

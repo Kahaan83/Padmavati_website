@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -12,7 +12,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0077B6",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://padmavatienterprise.com"),
   title: {
     default: "Padmavati Enterprise — Design & Print For Healthcare | Ahmedabad",
     template: "%s | Padmavati Enterprise",
@@ -42,22 +49,27 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans bg-white text-neutral-dark antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} font-sans bg-white text-neutral-dark antialiased selection:bg-brand-secondary/20 selection:text-brand-navy`}>
+        {/* Skip to main content — keyboard & screen reader accessibility (WCAG 2.4.1) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand-primary focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <PageProgressBar />
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>
     </html>
   );
 }
-

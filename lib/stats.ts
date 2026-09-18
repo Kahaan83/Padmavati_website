@@ -1,8 +1,9 @@
+const FOUNDED_YEAR = 1977;
+const CURRENT_YEAR = new Date().getFullYear();
+
 export const STATS = {
-  customers: "2000+",
   doctors: "2000+",
   team: "15+",
-  founded: 1977,
-  yearsExperience: () => `${new Date().getFullYear() - 1977}+`,
+  founded: FOUNDED_YEAR,
+  yearsExperience: `${CURRENT_YEAR - FOUNDED_YEAR}+`,
 } as const;
-

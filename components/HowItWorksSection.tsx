@@ -56,9 +56,10 @@ export default function HowItWorksSection() {
 
         {/* Steps */}
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Dashed connector line — desktop only */}
+          {/* Dashed connector line — desktop only, aligned to icon center (p-8=32px + mt-2=8px + h-16/2=32px = 72px) */}
           <div
-            className="hidden md:block absolute top-14 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px z-0"
+            aria-hidden="true"
+            className="hidden md:block absolute top-[72px] left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px z-0"
             style={{
               backgroundImage:
                 "repeating-linear-gradient(to right, #00B4D8 0, #00B4D8 8px, transparent 8px, transparent 18px)",
@@ -102,14 +103,13 @@ export default function HowItWorksSection() {
             href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20want%20to%20place%20an%20order`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold text-base rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-base rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
           >
-            <MessageCircle className="w-5 h-5 fill-white stroke-none" />
-            Start Your Order on WhatsApp →
+            <MessageCircle className="w-5 h-5" strokeWidth={2} />
+            Start Your Order on WhatsApp
           </a>
         </motion.div>
       </div>
     </section>
   );
 }
-

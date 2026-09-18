@@ -5,12 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { STATS } from "@/lib/stats";
 import { CONTACT } from "@/lib/contact";
-import { Plus, MessageCircle, ChevronRight, Users, Clock, MapPin } from "lucide-react";
+import { Plus, MessageCircle, ChevronRight, Users, Clock, Truck } from "lucide-react";
 
 const stats = [
   { icon: Users, value: STATS.doctors, label: "Doctors Served" },
   { icon: Clock, value: "In-House", label: "Design & Print" },
-  { icon: MapPin, value: "🚚 Pan-India", label: "Delivery" },
+  { icon: Truck, value: "Pan-India", label: "Fast Delivery" },
 ];
 
 const fadeUp = {
@@ -84,7 +84,7 @@ export default function Hero() {
               <strong className="text-neutral-dark font-medium">
                 we design, print and deliver
               </strong>{" "}
-              everything your hospital needs. In-house team. Zero outsourcing. We deliver pan-India — from Gujarat to Delhi, Mumbai to Chennai.
+              everything your hospital needs. In-house team. Zero outsourcing.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -93,13 +93,14 @@ export default function Hero() {
               custom={3}
               initial="hidden"
               animate="show"
-              className="flex flex-wrap gap-3"
+              className="flex flex-col sm:flex-row gap-3"
             >
               <a
                 href={`${CONTACT.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20hospital%20branding`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-navy text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                aria-label="Contact Padmavati Enterprise on WhatsApp"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-primary hover:bg-brand-navy text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp Us Now
@@ -107,7 +108,7 @@ export default function Hero() {
 
               <Link
                 href="/portfolio"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-brand-primary text-brand-primary font-semibold rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white border-2 border-brand-primary text-brand-primary font-semibold rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
               >
                 View Our Portfolio
                 <ChevronRight className="w-4 h-4" />
@@ -143,9 +144,8 @@ export default function Hero() {
             animate="show"
             className="lg:col-span-2"
           >
-            {/* ─── Product photo mosaic ─── */}
+            {/* ─── Product photo ─── */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              {/* Large main image */}
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
                   src="/hero/explore-products.png"
@@ -157,7 +157,6 @@ export default function Hero() {
                 />
                 {/* Gradient overlay at bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
-
 
                 {/* Bottom caption */}
                 <div className="absolute bottom-4 left-4 right-4">
@@ -173,4 +172,3 @@ export default function Hero() {
     </section>
   );
 }
-

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import {
   FolderOpen, Package, FileText, Mail, ClipboardList, FileCheck, FilePlus,
   Palette, CreditCard, BookOpen, Megaphone, PartyPopper, BookMarked,
@@ -20,13 +21,13 @@ const categories = [
   {
     id: "stationery",
     title: "Hospital Stationery",
-    subtitle: "Professional printed stationery built for hospitalal environments",
+    subtitle: "Professional printed stationery built for hospital environments",
     accentColor: "bg-brand-primary/10 text-brand-primary",
     services: [
       { icon: FolderOpen, name: "Doctor / PP Files", desc: "Premium UV-coated patient files with anti-scratch finish" },
       { icon: Package, name: "MRI & X-Ray Bags", desc: "Branded poly bags for MRI, CT and X-Ray report delivery" },
       { icon: FileText, name: "Prescription Pads (1×8\")", desc: "Custom pad sizes in single or duplicate with carbon copy" },
-      { icon: FileText, name: "Letterheads", desc: "Hospital and hospital letterheads in bond or premium paper" },
+      { icon: FileText, name: "Letterheads", desc: "Doctor and hospital letterheads in bond or premium paper" },
       { icon: Mail, name: "Envelopes", desc: "Branded DL, A4 and A5 envelopes for hospital correspondence" },
       { icon: ClipboardList, name: "Consent Forms", desc: "Pre-operative and procedure consent forms for all specialities" },
       { icon: FileCheck, name: "NABH Forms", desc: "Entire set of NABH-compliant hospital documentation" },
@@ -77,7 +78,7 @@ function ServiceCard({
 }) {
   const waText = encodeURIComponent(`Hi, I want to enquire about: ${name}`);
   return (
-    <div className="group flex flex-col bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-brand-secondary transition-all duration-250">
+    <div className="group flex flex-col bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-brand-secondary transition-all duration-200">
       {/* Icon */}
       <div className="w-11 h-11 rounded-xl bg-neutral-surface flex items-center justify-center mb-4 group-hover:bg-brand-primary/10 transition-colors duration-200">
         <Icon className="w-5 h-5 text-brand-primary" strokeWidth={1.75} />
@@ -115,7 +116,6 @@ export default function ServicesPage() {
       <div className="py-16 space-y-20 bg-white">
         {categories.map((cat, index) => (
           <section key={cat.id} id={cat.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Category heading */}
             <div className="flex items-center gap-3 mb-3">
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${cat.accentColor}`}>
                 {cat.title}
@@ -125,7 +125,7 @@ export default function ServicesPage() {
             <p className="text-neutral-mid mb-8 max-w-xl">{cat.subtitle}</p>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {cat.services.map((svc) => (
                 <ServiceCard key={svc.name} icon={svc.icon} name={svc.name} desc={svc.desc} />
               ))}

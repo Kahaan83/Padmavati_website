@@ -2,21 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-inter: "Inter", sans-serif;
-}
-
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  /* Respect user motion preferences (WCAG 2.3.3) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
-    @apply text-neutral-dark font-sans;
+    /* Remove default tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-brand-primary font-semibold;
+  /* Accessible focus indicators for keyboard users */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-secondary rounded-sm;
   }
 }
 
