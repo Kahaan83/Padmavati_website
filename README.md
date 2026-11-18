@@ -2,7 +2,7 @@
 
 # 🏥 Padmavati Enterprise — Healthcare Design & Print Platform
 
-<p><strong>Official corporate platform for Padmavati Enterprise — leading healthcare branding, hospital stationery, and medical print specialists in Ahmedabad, India.</strong></p>
+<p><strong>Official corporate platform for Padmavati Enterprise - leading healthcare branding, hospital stationery, and medical print specialists in Ahmedabad, India.</strong></p>
 
 [![Website](https://img.shields.io/badge/Live%20Site-padmavatienterprise.com-007791?style=for-the-badge&logo=googlechrome&logoColor=white)](https://padmavatienterprise.com)
 [![Next.js](https://img.shields.io/badge/Next.js-14%20(App%20Router)-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
@@ -28,7 +28,7 @@
 
 **Padmavati Enterprise** has been delivering specialized healthcare design and pharmaceutical print solutions for over four decades—serving 2,000+ doctors, clinics, and multi-specialty hospitals across India.
 
-This project is a modern, responsive web platform engineered using **Next.js 14 App Router** and **Tailwind CSS**. It provides an interactive portfolio showcase of hospital branding, brochure designs, prescription pads, and packaging, alongside direct inquiry channels via WhatsApp and Formspree.
+This project is a modern, responsive web platform engineered using **Next.js 14 App Router** and **Tailwind CSS**. It provides an interactive portfolio showcase of hospital branding, brochure designs,  prescription pads, and packaging, alongside direct inquiry channels via WhatsApp and Formspree.
 
 ---
 
@@ -36,7 +36,7 @@ This project is a modern, responsive web platform engineered using **Next.js 14 
 
 - **⚡ Modern Next.js 14 App Router:** Server-Side Generation (SSG) with optimized Core Web Vitals and instant page transitions.
 - **🖼️ Dynamic Portfolio Gallery:** Filterable showcase of medical logos, brochures, files, prescription designs, and hospital stationery.
-- **📱 One-Click WhatsApp & Formspree Integration:** Direct inquiry triggers connecting prospective clients straight to sales and support.
+- **📱 One-Click WhatsApp &  Formspree Integration:** Direct inquiry triggers connecting prospective clients straight to sales and support.
 - **🎨 Centralized Content Architecture:** Decoupled data layer in `lib/` allowing non-technical operators to update stats, testimonials, services, and photos without touching React components.
 - **♿ Accessible & Mobile-First:** Full WCAG-conscious contrast, responsive layout for all viewports, and clean keyboard navigation.
 
@@ -90,8 +90,8 @@ All website copy, numbers, and client testimonials are centralized in the `lib/`
    cd Padmavati_website
    ```
 
-2. **Install dependencies:**
-   ```bash
+2. **Install  dependencies:**
+   ```bash 
    npm install
    ```
 
@@ -123,6 +123,6 @@ All website copy, numbers, and client testimonials are centralized in the `lib/`
 
 ---
 
-## 📄 License
+## 📄 License   
 
 Proprietary client project — All rights reserved © Padmavati Enterprise.
